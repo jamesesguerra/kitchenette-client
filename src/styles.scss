@@ -1,14 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/theme.css";
-// @import "primeng/resources/themes/rhea/theme.css";
+// @import "primeng/resources/themes/soho-light/theme.css";
+// @import "primeflex/primeflex.css";
+
 @import "primeng/resources/primeng.css";
+
+h3 {
+    margin-block-start: 5px;
+    margin-block-end:0;
+    margin-inline-start:0;
+    margin-inline-end:0;
+    padding-block-start:0;
+    padding-block-end:0;
+    padding-inline-start:0;
+    padding-inline-end:0;
+}
 
 body,
 body .p-component {
     font-family: 'Inter';
     color: var(--text-color);
+    margin: 0px;
 }
 
-h1, h2 {
+h3 {
     font-family: "Playwrite PL";
 }

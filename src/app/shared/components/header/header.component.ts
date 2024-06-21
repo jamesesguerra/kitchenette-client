@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { Component, ViewChild } from '@angular/core';
 import { MenubarModule } from 'primeng/menubar';
 import { BadgeModule } from 'primeng/badge';
 import { AvatarModule } from 'primeng/avatar';
 import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
 import { RippleModule } from 'primeng/ripple';
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
+import { MenuModule } from 'primeng/menu';
+import { Sidebar } from 'primeng/sidebar';
+import { ImportsModule } from './imports';
 
 
 @Component({
@@ -14,72 +18,17 @@ import { RippleModule } from 'primeng/ripple';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   imports: [
-    MenubarModule,
-    BadgeModule,
-    AvatarModule,
-    InputTextModule,
-    RippleModule,
+    ImportsModule,
     CommonModule
   ]
 })
-export class HeaderComponent implements OnInit {
-  items: MenuItem[] | undefined;
+export class HeaderComponent {
+  @ViewChild('sidebarRef') sidebarRef!: Sidebar;
 
-    ngOnInit() {
-        this.items = [
-            {
-                label: 'Home',
-                icon: 'pi pi-home'
-            },
-            {
-                label: 'Features',
-                icon: 'pi pi-star'
-            },
-            {
-                label: 'Projects',
-                icon: 'pi pi-search',
-                items: [
-                    {
-                        label: 'Core',
-                        icon: 'pi pi-bolt',
-                        shortcut: '⌘+S'
-                    },
-                    {
-                        label: 'Blocks',
-                        icon: 'pi pi-server',
-                        shortcut: '⌘+B'
-                    },
-                    {
-                        label: 'UI Kitss',
-                        icon: 'pi pi-pencil',
-                        shortcut: '⌘+U'
-                    },
-                    {
-                        separator: true
-                    },
-                    {
-                        label: 'Templates',
-                        icon: 'pi pi-palette',
-                        items: [
-                            {
-                                label: 'Apollo',
-                                icon: 'pi pi-palette',
-                                badge: '2'
-                            },
-                            {
-                                label: 'Ultima',
-                                icon: 'pi pi-palette',
-                                badge: '3'
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                label: 'Contact',
-                icon: 'pi pi-envelope',
-                badge: '3'
-            }
-        ];
-    }
+  closeCallback(e: Event): void {
+      this.sidebarRef.close(e);
+  }
+
+  sidebarVisible: boolean = false;
+   
 }
